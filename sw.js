@@ -5,10 +5,10 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(cacheName)
             .then(cache => cache.addAll([
-                './src/js/basicMap.js',
-                './index.html',
-                './src/images/leaflet-logo.png',
-                'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+                '/index.html',
+                '/app.js',
+                '/src/js/basicMap.js',
+                '/src/images/leaflet-logo.png',
                 'https://unpkg.com/leaflet@1.1.0/dist/leaflet.css',
                 'https://unpkg.com/leaflet@1.1.0/dist/leaflet.js',
                 'https://code.jquery.com/jquery-3.4.1.min.js'
