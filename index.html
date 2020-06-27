@@ -23,14 +23,82 @@
     <meta name="msapplication-TileColor" content="#fff">
     <meta name="theme-color" content="#3f51b5">
 
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!-- custom fonts and styles for the bootstrap template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+
+
 </head>
-<body>
-<h1>Hello World</h1>
-<h2>leaflet</h2>
-<img src="images/leaflet-logo.png" alt="leaflet-log" width="300px"/>
-<hr>
-<button id="button" onclick="getImage()">click me to get a image</button>
-<div id="image"></div>
+<body id="page-top">
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+            <div class="sidebar-brand-text mx-3">Progressive Web APP</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item d-none d-lg-block" >
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="alert('menu1');" aria-expanded="true" aria-controls="collapseOne">
+                <!-- the next line is the cog image -->
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Menu 1</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item d-lg-none" >
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Menu 2</span>
+            </a>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="#" onclick="alert('menu 3')";>Menu 3</a>
+                    <a class="collapse-item" href="#"
+                       onclick="alert('menu 4');">Menu 4</a>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <h1>Hello World</h1>
+        <h2>leaflet</h2>
+        <img src="images/leaflet-logo.png" alt="leaflet-log" width="300px"/>
+        <hr>
+        <button id="button" style="width: 200px" onclick="getImage()">click me to get a image</button>
+        <div id="image"></div>
+
+    </div>
+    <!-- End of Main Content -->
+</div>
+<!-- end of wrapper -->
+
+<!-- jquery JavaScript-->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/sb-admin-2.js"></script>
+
+<script src="app.js"></script>
 
 
 <script>
@@ -40,10 +108,6 @@
     }
 
 </script>
-
-
-
-<script src="/app.js"></script>
 
 </body>
 </html>

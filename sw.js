@@ -2,7 +2,13 @@ const cacheFiles = [
     '/',
     '/index.html',
     '/app.js',
-    'images/leaflet-logo.png'
+    'images/leaflet-logo.png',
+    'css/sb-admin-2.css',
+    'js/sb-admin-2.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css',
+    'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
+    'https://code.jquery.com/jquery-3.4.1.min.js',
+    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'
 ];
 
 const cacheName = 'static';
@@ -14,6 +20,9 @@ self.addEventListener('install', event => {
             .then(function (cache) {
                 console.log('[Service Worker] Precaching App Shell');
                 cache.addAll(cacheFiles)
+            })
+            .catch(function (error) {
+                console.log("Caching failed", error);
             })
     );
 });
