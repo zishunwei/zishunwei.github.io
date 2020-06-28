@@ -12,8 +12,6 @@ const cacheFiles = [
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js',
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-    'https://creativecommons.org/licenses/by-sa/2.0/',
-    'https://maps.googleapis.com/maps/api/js?key=AIzaSyDqbgoaatdaJyKEBL0MiXuiOrZzMN9pKwE&callback=initMap'
 
 ];
 
