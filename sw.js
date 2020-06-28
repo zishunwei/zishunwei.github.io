@@ -11,7 +11,6 @@ const cacheFiles = [
     'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js',
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js'
-
 ];
 
 const cacheName = 'static';
