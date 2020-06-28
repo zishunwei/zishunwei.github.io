@@ -28,9 +28,35 @@
 
 
     <!-- custom fonts and styles for the bootstrap template -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"
+          type="text/css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
     <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+
+    <!-- jquery JavaScript-->
+    <script
+            crossorigin="anonymous"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script crossorigin="anonymous"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/sb-admin-2.js"></script>
+
+
+    <!-- CSS for the Leaflet -->
+    <link crossorigin="" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          rel="stylesheet"/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script crossorigin=""
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+
+    <script src="app.js"></script>
 
 
 </head>
@@ -41,7 +67,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
             <div class="sidebar-brand-text mx-3">Progressive Web APP</div>
         </a>
 
@@ -49,65 +75,68 @@
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item d-none d-lg-block" >
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="alert('menu1');" aria-expanded="true" aria-controls="collapseOne">
+        <li class="nav-item">
+            <a aria-controls="collapseOne" aria-expanded="true" class="nav-link collapsed" data-target=""
+               data-toggle="collapse"
+               href="#" onclick="getLog()">
                 <!-- the next line is the cog image -->
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Menu 1</span>
+                <span>Show Log</span>
             </a>
-        </li>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item d-lg-none" >
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Menu 2</span>
-            </a>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#" onclick="alert('menu 3')";>Menu 3</a>
-                    <a class="collapse-item" href="#"
-                       onclick="alert('menu 4');">Menu 4</a>
-                </div>
-            </div>
         </li>
 
     </ul>
     <!-- End of Sidebar -->
 
     <div id="content-wrapper" class="d-flex flex-column">
-        <h1>Hello World</h1>
-        <h2>leaflet</h2>
+        <div id="UCL"></div>
+        <h1>Leaflet</h1>
         <img src="images/leaflet-logo.png" alt="leaflet-log" width="300px"/>
         <hr>
-        <button id="button" style="width: 200px" onclick="getImage()">click me to get a image</button>
-        <div id="image"></div>
+        <div id="mapid" style="width: 300px; height: 200px"></div>
+        <hr>
+        <h1>Google Map</h1>
+        <div id="map" style="width: 300px; height: 200px"></div>
+
 
     </div>
     <!-- End of Main Content -->
 </div>
 <!-- end of wrapper -->
 
-<!-- jquery JavaScript-->
-<script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-
-<!-- Bootstrap core JavaScript-->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/sb-admin-2.js"></script>
-
-<script src="app.js"></script>
-
-
 <script>
 
-    function getImage() {
-        document.getElementById("image").innerHTML ="<img src='images/UCL-logo.png' alt='UCL-log' width='300px'/>"
+    function getLog() {
+        document.getElementById("UCL").innerHTML = "<img src='images/UCL-logo.png' alt='UCL-log' width='300px'/>"
+    }
+
+    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
+        });
     }
 
 </script>
+
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqbgoaatdaJyKEBL0MiXuiOrZzMN9pKwE&callback=initMap">
+</script>
+
 
 </body>
 </html>
