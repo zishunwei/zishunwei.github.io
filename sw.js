@@ -10,7 +10,7 @@ const cacheFiles = [
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js',
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
-    'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js',
+    'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js'
 
 ];
 
