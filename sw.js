@@ -8,7 +8,13 @@ const cacheFiles = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css',
     'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
     'https://code.jquery.com/jquery-3.4.1.min.js',
-    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'
+    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js',
+    'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
+    'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js',
+    'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+    'https://creativecommons.org/licenses/by-sa/2.0/',
+    'https://maps.googleapis.com/maps/api/js?key=AIzaSyDqbgoaatdaJyKEBL0MiXuiOrZzMN9pKwE&callback=initMap'
+
 ];
 
 const cacheName = 'static';
