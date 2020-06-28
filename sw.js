@@ -11,7 +11,6 @@ const cacheFiles = [
     'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js',
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
     'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js',
-    'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
 
 ];
 
