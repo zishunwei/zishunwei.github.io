@@ -110,6 +110,7 @@
         document.getElementById("UCL").innerHTML = "<img src='images/UCL-logo.png' alt='UCL-log' width='300px'/>"
     }
 
+    // Leaflet map
     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -122,6 +123,7 @@
         zoomOffset: -1
     }).addTo(mymap);
 
+    // Google map
     var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
