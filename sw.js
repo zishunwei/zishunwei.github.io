@@ -90,7 +90,7 @@ const cacheFiles = [
     '/countries-raster/3/7/4.png',
     '/countries-raster/3/7/5.png',
     '/countries-raster/3/7/6.png',
-    '/countries-raster/3/7/7.png',
+    '/countries-raster/3/7/7.png'
 ];
 
 const cacheName = 'static';
