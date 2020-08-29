@@ -1,52 +1,782 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+
 <head>
-    <title>Progressive Web App-Countries</title>
-    <meta charset="utf-8"/>
-    <link rel="manifest" href="/manifest.json">
-    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-          name="viewport">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="PWAGram">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-57x57.png" sizes="57x57">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-60x60.png" sizes="60x60">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-72x72.png" sizes="72x72">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-114x114.png" sizes="114x114">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-144x144.png" sizes="144x144">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="/images/icons/apple-icon-180x180.png" sizes="180x180">
-    <meta name="msapplication-TileImage" content="/src/images/icons/app-icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#fff">
-    <meta name="theme-color" content="#3f51b5">
-
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet-src.js"></script>
-
-    <script src="app.js"></script>
-
-    <script>
-        function init() {
-            var mapBounds = new L.LatLngBounds(
-                new L.LatLng(-85.738076382392, -180),
-                new L.LatLng(84.79842793857, 180));
-            var mapMinZoom = 0;
-            var mapMaxZoom = 3;
-            var map = L.map('map').setView([0,0], 2);
-            L.tileLayer('countries-raster/{z}/{x}/{y}.png', {
-                minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-                bounds: mapBounds
-            }).addTo(map);
-        }
-    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=10;IE=9;IE=8;IE=7;IE=EDGE">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate" media="handheld" href="#" />
+    <meta charset="utf-8">
+    <title>魏子舜</title>
+    <meta content="互联网招聘, 移动互联网招聘, 垂直互联网招聘,拉勾互联网招聘, 微信招聘, 微博招聘, 拉勾官网, 拉勾百科,跳槽, 高薪职位, 互联网圈子, IT招聘, 职场招聘, 猎头招聘,O2O招聘, LBS招聘, 社交招聘, 校园招聘, 校招,社会招聘,社招"
+          name="keywords">
     <style>
-        html, body, #map { width:100%; height:100%; margin:0; padding:0; }
+        * {
+            outline: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "Hiragino Sans GB", "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+            color: #333;
+            word-wrap: break-word;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        menu,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+
+        progress {
+            display: inline-block;
+            vertical-align: baseline;
+        }
+
+        a {
+            color: #00b38a;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #666666;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 10px 0;
+            font-weight: normal;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p+p {
+            margin-top: 10px;
+        }
+
+        img {
+            border: 0;
+            vertical-align: top;
+            display: inline-block;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ededed;
+            border-radius: 0;
+            font-family: "Hiragino Sans GB", "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+        }
+
+        textarea {
+            overflow: auto;
+        }
+
+        label,
+        select,
+        button,
+        input[type="button"],
+        input[type="reset"],
+        input[type="submit"],
+        input[type="radio"],
+        input[type="checkbox"],
+        input[type="file"] {
+            cursor: pointer;
+        }
+
+        input[type=text],
+        input[type=password],
+        textarea {
+            font-family: "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th,
+        td {
+            padding: 0;
+        }
+
+        strong {
+            font-weight: normal;
+        }
+
+        em,
+        i {
+            font-style: normal;
+        }
+
+        dl,
+        dt,
+        dd {
+            margin: 0;
+        }
+
+        ::selection {
+            color: #fff;
+            background-color: #00b38a;
+        }
+
+        ::-moz-selection {
+            color: #fff;
+            background-color: #00b38a;
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #container {
+            width: 720px;
+            margin: 50px auto 54px auto;
+            border: 1px solid #e3ebe9;
+            border-radius: 5px;
+        }
+
+        .mr-template {
+            padding: 50px 50px 10px;
+        }
+
+        .mr-template .mr-template_title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .mr-template .mr-template_title span {
+            font-size: 18px;
+            color: #333333;
+            font-weight: 600;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .mr-template .mr-template_title span:before {
+            content: '';
+            display: block;
+            border-left: 3px solid #00B38A;
+            height: 16px;
+            width: 3px;
+            position: absolute;
+            left: -7px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .mr-template .mr_md_del {
+            display: none;
+        }
+
+        /***** 基本信息 ****/
+
+        .basic {
+            padding: 50px;
+            background: #FAFAFA;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 1px solid #E3EBE9;
+            display: flex;
+        }
+
+        .basic .basic-photo {
+            height: 88px;
+            width: 88px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .basic .basic-photo img {
+            height: 88px;
+            width: 88px;
+            position: absolute;
+            top: 0;
+            border-radius: 50%;
+        }
+
+        .basic .basic-photo .basic-photo_shadow {
+            display: none;
+        }
+
+        .basic .basic-photo:hover .basic-photo_shadow {
+            display: block;
+        }
+
+        .basic .basic-info {
+            position: relative;
+            width: 100%;
+            margin-left: 20px;
+            flex: 1;
+        }
+
+        .basic .basic-info .edit-btn {
+            position: absolute;
+            right: 0;
+            top: 4px;
+        }
+
+        .basic .basic-info .basic-name-area {
+            overflow: hidden;
+            height: 37px;
+            margin-bottom: 11px;
+        }
+
+        .basic .basic-info .basic-name {
+            float: left;
+            max-width: 250px;
+            font-size: 26px;
+            color: #333333;
+            font-weight: 600;
+            line-height: 37px;
+        }
+
+        .basic .basic-info .icon-sex {
+            width: 13px;
+            height: 13px;
+            float: left;
+            margin-top: 16px;
+            margin-left: 10px;
+            background: none;
+        }
+
+        .basic .basic-info .icon-sex.icon-sex__male {
+            background: url(https://www.lgstatic.com/common/image/pc/icon_man.png);
+        }
+
+        .basic .basic-info .icon-sex.icon-sex__female {
+            background: url(https://www.lgstatic.com/common/image/pc/icon_woman.png);
+        }
+
+        .basic .basic-info .basic-self {
+            margin-top: 20px;
+        }
+
+        .basic .basic-info p {
+            font-size: 14px;
+            color: #333333;
+            line-height: 20px;
+            margin-top: 6px;
+        }
+
+        .basic .basic-info i {
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .basic .basic-info .basic-tel_icon {
+            width: 11px;
+            height: 14px;
+            margin-right: 2px;
+            background: url(https://www.lgstatic.com/common/image/pc/icon_phone.png);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .basic .basic-info .basic-email_icon {
+            width: 14px;
+            height: 11px;
+            margin-right: 2px;
+            background: url(https://www.lgstatic.com/common/image/pc/icon_mail.png);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .basic .basic-info .basic-tel {
+            margin-right: 20px;
+        }
+
+        .basic-tel span {
+            vertical-align: middle;
+        }
+
+        .basic-email span {
+            vertical-align: middle;
+        }
+
+        /***** 基本信息 end ****/
+
+        /***** 自我描述 ****/
+
+        .per .per-self_content {
+            position: relative;
+        }
+
+        .per .per-self_content .per-self_des {
+            margin-top: 13px;
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+        }
+
+        .per .per-self_content .per-self_des p {
+            margin-top: 0;
+        }
+
+        .per .per-self_content .per-self_des ol {
+            list-style-type: decimal;
+            -webkit-padding-start: 20px;
+        }
+        .per .per-self_content .per-self_des ul {
+            list-style: disc;
+            -webkit-padding-start: 20px;
+        }
+
+        /***** 自我描述 end ****/
+
+        /***** 工作经历 ****/
+
+        .work-exp .work-exp_list {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .work-exp .work-exp_list .exp-list_time {
+            font-size: 14px;
+            color: #666666;
+            position: absolute;
+            right: 0;
+        }
+
+        .work-exp .work-exp_list .exp-list_top {
+            display: flex;
+            align-items: center;
+        }
+
+        .work-exp .work-exp_list .exp-list_top img {
+            width: 46px;
+            height: 46px;
+            margin-right: 10px;
+        }
+
+        .work-exp .work-exp_list .exp-list_top .exp-list_right {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 46px;
+            justify-content: space-between;
+        }
+
+        .work-exp .work-exp_list .exp-list_top .exp-list_right p,
+        .work-exp .work-exp_list .exp-list_top .exp-list_right strong {
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .work-exp .work-exp_list .exp-list_top .exp-list_right strong {
+            font-weight: 600;
+        }
+
+        .work-exp .work-exp_list .tagboard {
+            margin: 20px 0 10px;
+        }
+
+        .work-exp .work-exp_list .exp-list_content {
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+        }
+
+        .tagboard .tagboard-tag {
+            font-size: 12px;
+            color: #999;
+            line-height: 18px;
+            padding: 3px 10px;
+            border: 1px solid #EAEDEC;
+            border-radius: 100px;
+            margin-right: 10px;
+        }
+
+        .work-exp .work-exp_list .exp-list_content ul, .work-exp .work-exp_list .exp-list_content_highlight ul {
+            list-style: disc;
+            -webkit-padding-start: 20px;
+        }
+
+        .work-exp .work-exp_list .exp-list_content ol, .work-exp .work-exp_list .exp-list_content_highlight ol {
+            list-style-type: decimal;
+            -webkit-padding-start: 20px;
+        }
+        /***** 工作经历 end ****/
+
+        /***** 项目经历 ****/
+
+        .pro-exp .pro-exp_list {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_title {
+            font-size: 14px;
+            color: #333333;
+            font-weight: 600;
+            cursor: default;
+            display: flex;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_title .exp-project_name, .pro-exp .pro-exp_list .exp-list_title .exp-project_company span {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_title .exp-project_company {
+            display: flex;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_time {
+            font-size: 14px;
+            color: #666666;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_content,
+        .pro-exp .pro-exp_list .exp-project_des {
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+
+        .pro-exp .exp-list_title.active:hover {
+            color: #00B38A;
+            cursor: pointer;
+        }
+        .pro-exp .exp-project_url {
+            font-size: 14px;
+            color: #666;
+            line-height: 30px;
+        }
+        .pro-exp .pro-exp_list .exp-list_content ul, .pro-exp .pro-exp_list .exp-project_des ul {
+            list-style: disc;
+            -webkit-padding-start: 20px;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_content ol,.pro-exp .pro-exp_list .exp-project_des ol{
+            list-style-type:decimal;-webkit-padding-start:20px
+        }
+
+        /***** 项目经历 end ****/
+
+        /***** 教育经历 ****/
+
+        .edu-exp .edu-exp_list {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_time {
+            font-size: 14px;
+            color: #666666;
+            position: absolute;
+            right: 0;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top {
+            display: flex;
+            align-items: center;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top img {
+            width: 46px;
+            height: 46px;
+            margin-right: 10px;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 46px;
+            justify-content: space-between;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right p,
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right strong {
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right strong {
+            font-weight: 600;
+        }
+
+
+        /***** 教育经历 end ****/
+
+        /***** 社交主页 ****/
+
+        .social-page .social-page_list {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .social-page .social-page_list .social-page_content {
+            display: flex;
+        }
+
+        .social-page .social-page_list .social-page_content img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .social-page .social-page_list .social-page_content p {
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /***** 社交主页 end ****/
+        /***** 图片作品 ****/
+
+        .portfolio-page .portfolio-list{
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .portfolio-page .portfolio-list .portfolio-content{
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /***** 图片作品 end ****/
     </style>
 </head>
-<body onload="init()">
-<div id="map"></div>
-</body>
+
+<body>
+<div id="container">
+    <!-- 基本信息 -->
+    <div class="basic" id="baseInfo">
+        <div class="basic-photo">
+            <img class="mr_headimg user-avatar" id="userpic" src="https://www.lgstatic.com//i/image3/M01/57/F4/CgpOIF322GqABEOaAAAzza104AI123.png" width="120" height="120" alt="头像"
+            />
+        </div>
+        <div class="basic-info">
+            <div class="basic-name-area">
+                <p class="basic-name female">魏子舜</p>
+                <i class="icon-sex icon-sex__male"></i>
+            </div>
+            <p class="basic-self">
+                <span class="basic-school">伦敦大学学院</span>
+
+                <span class="basic-edu"> / 硕士</span>
+
+                <span class="basic-end-year"> / 2021年毕业</span>
+
+                <span class="basic-age">
+                                     / 22岁</span>
+
+            </p>
+            <p>
+                            <span class="basic-tel">
+                                <i class="basic-tel_icon"></i>
+                                <span>15528269713</span>
+                            </span>
+                <span class="basic-email">
+                                <i class="basic-email_icon"></i>
+                                <span>zishun_wei@outlook.com</span>
+                            </span>
+            </p>
+            <p><a href="魏子舜-简历.pdf">&nbsp; CV (简历)</a></p>
+        </div>
+    </div>
+    <!-- /基本信息 -->
+
+    <!-- 自我描述 -->
+    <div class="mr-template per" id="perAbility">
+        <div class="mr-template_title">
+            <span>个人梗概</span>
+        </div>
+        <div class="tagboard integrative-tag">
+            <div class="integrative-tag_content">
+            </div>
+        </div>
+        <div class="per-self_content">
+            <div class="per-self_des">
+                <p>• 伦敦大学学院地理空间科学（地理信息科学与计算） 硕士在读学生，有坚实的计算机基础与前端开发知识。</p>
+                <p>• 前端爱好者， 对原生 JavaScript 和 ES6 有透彻深入的理解， 熟悉jQuery, PWA, 熟悉 React, Redux, 了解 Vue。</p>
+                <p>• 热衷创新，爱好学习， 既擅长团队合作，又有自己的见解能够独立完成任务。<br /></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mr-template per" id="programmingAbility">
+        <div class="mr-template_title">
+            <span>专业技能</span>
+        </div>
+        <div class="tagboard integrative-tag">
+            <div class="integrative-tag_content">
+            </div>
+        </div>
+        <div class="per-self_content">
+            <div class="per-self_des">
+                <p>• 编程语言: JavaScript, HTML5+CSS3, Python, SQL, R</p>
+                <p>• 框架/库: jQuery, Node.js, PWA (Progressive Web App), React, Vue, Bootstrap, Leaflet</p>
+                <p>• 其他: Git/GitHub, Linux(Ubuntu), ArcGIS, QGIS<br /></p>
+            </div>
+        </div>
+    </div>
+    <!-- /自我描述 -->
+
+    <!-- 教育经历 -->
+    <div class="mr-template edu-exp" id="eduExp">
+        <div class="mr-template_title">
+            <span>教育经历</span>
+        </div>
+        <ol class="edu-exp_group">
+            <li class="edu-exp_list">
+                <p class="exp-list_time">2019.09-2021.01</p>
+                <div class="exp-list_top">
+                    <div class="exp-list_right">
+                        <strong>英国伦敦大学学院 （伦敦）</strong>
+                        <p>硕士 / 地理空间科学（地理信息科学和计算)</p>
+                    </div>
+                </div>
+            </li>
+            <li class="edu-exp_list">
+                <p class="exp-list_time">2015.09-2019.06</p>
+                <div class="exp-list_top">
+                    <div class="exp-list_right">
+                        <strong>西交利物浦大学 （苏州）</strong>
+                        <p>本科 / 土木工程</p>
+                    </div>
+                </div>
+            </li>
+            <li class="edu-exp_list">
+                <p class="exp-list_time">2017.09-2018.06</p>
+                <div class="exp-list_top">
+                    <div class="exp-list_right">
+                        <strong>英国利兹大学 （利兹）</strong>
+                        <p>本科 / 土木工程 （交换生）</p>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <!-- /教育经历 -->
+
+    <!-- 项目经历 -->
+    <div class="mr-template pro-exp" id="proExp">
+        <div class="mr-template_title">
+            <span>项目经历</span>
+        </div>
+        <ol class="pro-exp_group">
+            <li class="pro-exp_list">
+                <p class="exp-list_title">
+                    <span class="exp-project_name">基于定位的问答测验 APPs 开发</span>
+                </p>
+                <p class="exp-list_time">2020.01-2020.04</p>
+                <div class="exp-project_des"><p>• 熟练使用 JavaScript (jQuery, AJAX, Leaflet)， 实现追踪定位，地图调用及客制化， 收集和处理用户提交的问题与答案，<br />显示提交的测验问题在地图上以供用户回答等基本功能。<br />• 进一步实现当用户接近时问题点自动弹出， 问题点基于回答正确与否更改显示状态， 以最近设置、 回答错误等条件显示问<br />题点， 绘制各种表格和统计图来可视化实时数据等高级功能。<br />• 使用 Node.js 构建 API, Bootstrap 构建用户界面 (将提交问题和回答测验的 APP 按用户视口大小进行区分显示)，<br />PostgreSQL 构建数据库来收集和查询用户数据。&nbsp;&nbsp;<br /></p></div>
+                <div class="exp-list_content">
+                </div>
+                <p class="exp-project_url">项目链接: <a href="https://github.com/zishunwei/Location-Based-Quiz-Question-App">https://github.com/zishunwei/Location-Based-Quiz-Question-App</a></p>
+                <p class="exp-project_url">&#12288 &#12288 &#12288 &#8194<a href="https://github.com/zishunwei/Location-Based-Quiz-Question-App-API">https://github.com/zishunwei/Location-Based-Quiz-Question-App-API</a></p>
+            </li>
+            <li class="pro-exp_list">
+                <p class="exp-list_title">
+                    <span class="exp-project_name">PWA（渐进式网页应用）开发移动地图应用</span>
+                </p>
+                <p class="exp-list_time">2020.05-2020.08</p>
+                <div class="exp-project_des"><p>• 熟练使用多种 PWA 技术构建和部署一个支持多平台的基本移动地图应用程序。<br />• 将开源的包括底图栅格切片、 各种测试矢量数据在内的基本地理数据进行处理， 再基于 Leaflet 创建离线地图应用。<br />• 制定多种缓存策略， 于不同运行环境在线和离线测试与研究应用程序表现 （地图数据加载时间， 占用内存等）。&nbsp;&nbsp;<br /></p></div>
+                <div class="exp-list_content">
+                    <p><br /></p>
+                </div>
+                <p class="exp-project_url">项目链接: <a href="https://github.com/zishunwei/pwa">https://github.com/zishunwei/pwa</a> </p>
+            </li>
+            <li class="pro-exp_list">
+                <p class="exp-list_title">
+                    <span class="exp-project_name">Python 开发洪水应急导航地图软件</span>
+                </p>
+                <p class="exp-list_time">2019.11-2020.01</p>
+                <div class="exp-project_des"><p>• 1. 收集用户输入坐标 2. 搜索用户 5km 内最高点 3.搜索离用户和离最高点最近的道路节点。<br />• 3.找出基础路网里的最短路径 4.将所有信息可视化在地图上 5.设计软件 GUI。&nbsp;&nbsp;<br /></p></div>
+                <div class="exp-list_content">
+                    <p><br /></p>
+                </div>
+                <p class="exp-project_url">项目链接: <a href="https://github.com/zishunwei/Flood-Emergency-Planning-App">https://github.com/zishunwei/Flood-Emergency-Planning-App</a> </p>
+            </li>
+        </ol>
+    </div>
+    <!-- /项目经历 -->
+
+    <!-- 工作经历 -->
+    <div class="mr-template work-exp" id="workExp">
+        <div class="mr-template_title">
+            <span>工作经历</span>
+        </div>
+        <ol class="work-exp_group">
+            <li class="work-exp_list">
+                <p class="exp-list_time">2018.06-2018.08</p>
+                <div class="exp-list_top">
+                    <img src="https://www.lgstatic.com/i/image/M00/03/02/Cgp3O1alyOSAGdenAAAytEFVGng749.png" alt="公司Logo">
+                    <div class="exp-list_right">
+                        <strong class="exp-list_title">
+                            <span>博世（中国）</span>
+                            ／
+                            <span>房地产及设施建设实现部</span>
+                        </strong>
+                        <p>建筑工程管理|项目经理</p>
+                    </div>
+                </div>
+                <div class="tagboard">
+                </div>
+                <div class="exp-list_content">
+                    <p>• 负责辅助管理博世 S208 办公大楼现场施工项目（行业顶尖水平项目），推进项目进程。<br />• 同时沟通多个乙方施工单位， 严格把控项目进度和完成质量， 帮助项目按期以极高质量顺利完成。&nbsp;</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <!-- /工作经历 -->
+
+    <!-- 社交主页 -->
+    <div class="mr-template social-page" id="socialPage">
+        <div class="mr-template_title">
+            <span>Github</span>
+        </div>
+        <ol class="social-page_group">
+            <li class="social-page_list">
+                <div class="social-page_content">
+                    <img src="https://www.lgstatic.com/common/image/social/github@2x.png" alt="">
+                    <p>https://github.com/zishunwei</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <!-- /社交主页 -->
+
+    <!-- 图片作品 -->
+    <!-- /图片作品 -->
+</div>
+
 </html>
